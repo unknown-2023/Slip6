@@ -35,4 +35,16 @@ plt.ylabel('Pressure')
 plt.show()
 
 # Predicting a new result with Polynomial Regression
-lin2.predict(poly.fit_transform(110.0))
+new_value = np.array([110.0])
+
+# Reshape the scalar value into a 2D array
+new_value_2d = new_value.reshape(1, -1)
+
+# Transform the 2D array using PolynomialFeatures
+new_value_poly = poly.transform(new_value_2d)
+
+# Predict using the Polynomial Regression model
+prediction = lin2.predict(new_value_poly)
+
+# Print or use the prediction as needed
+print(prediction)
